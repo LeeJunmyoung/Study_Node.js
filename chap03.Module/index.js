@@ -15,3 +15,10 @@ console.log("");
 
 console.log(exportsJs.odd());
 console.log(exportsJs.even());
+
+console.log("");
+
+console.log(exports);
+console.log(module.exports);
+
+console.log(exports===module.exports);

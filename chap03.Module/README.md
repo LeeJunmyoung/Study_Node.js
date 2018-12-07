@@ -23,3 +23,13 @@ module.exports={
 exports.odd = ()=> "홀수";
 
 ```
+
+3. exports와 module.exports 관계
+```
+var module = {
+	exports: {}
+};
+var exports = module.exports;
+
+return module.exports;
+```
