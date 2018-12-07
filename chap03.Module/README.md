@@ -33,3 +33,10 @@ var exports = module.exports;
 
 return module.exports;
 ```
+
+4. ES6에서의 모듈
+```
+export default variable;
+
+```
+[ESM](https://nodejs.org/api/esm.html)
