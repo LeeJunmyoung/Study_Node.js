@@ -10,7 +10,7 @@
 ## 모듈화
 
 1. module.exports
-```
+```javascript
 const odd = () => '홀수';
 module.exports={
     odd,
@@ -19,13 +19,13 @@ module.exports={
 ```
 
 2. exports
-```
+```javascript
 exports.odd = ()=> "홀수";
 
 ```
 
 3. exports와 module.exports 관계
-```
+```javascript
 var module = {
 	exports: {}
 };
@@ -34,9 +34,8 @@ var exports = module.exports;
 return module.exports;
 ```
 
-4. ES6에서의 모듈
-```
+4. ES6에서의 모듈  [ESM](https://nodejs.org/api/esm.html)
+```javascript
 export default variable;
 
 ```
-[ESM](https://nodejs.org/api/esm.html)
