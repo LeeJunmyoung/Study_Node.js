@@ -10,7 +10,7 @@
 ## 모듈화
 
 1. module.exports
-```javascript
+```
 const odd = () => '홀수';
 module.exports={
     odd,
@@ -19,13 +19,13 @@ module.exports={
 ```
 
 2. exports
-```javascript
+```
 exports.odd = ()=> "홀수";
 
 ```
 
 3. exports와 module.exports 관계
-```javascript
+```
 var module = {
 	exports: {}
 };
@@ -35,12 +35,11 @@ return module.exports;
 ```
 * module.exports 에는 어떤값을 대입해도 되지만, exports에는 반드시 객체처럼 속성명과 속성값을 대입해야 합니다.
 
-4. ES6에서의 모듈  [ESM](https://nodejs.org/api/esm.html)
-```javascript
+4. ES6에서의 모듈
+```
 export default variable;
 
 ```
-<<<<<<< HEAD
 * [ESM](https://nodejs.org/api/esm.html)
 
 ## URL [URL](https://nodejs.org/api/url.html)
@@ -57,5 +56,9 @@ toString -> 문자열로
 
 2. querystring
 > url의 쿼리 부분을 자바스크립트 객체로 분리한다.
-=======
->>>>>>> 1f3595c25eef3b58b3be8a0544dc4dcce5c0af1c
+
+## 파일 시스템 접근 [fs](https://nodejs.org/api/fs.html)
+
+1. 파일 시스템 입출력
+> 비동기 - 논블로킹에 유의하자.
+
