@@ -62,3 +62,36 @@ toString -> 문자열로
 1. 파일 시스템 입출력
 > 비동기 - 논블로킹에 유의하자.
 
+## 에러처리 [error](https://nodejs.org/api/errors.html)
+> node.js 싱글 스레드 이므로 에러처리에 유의해야함
+
+1. try-catch
+```javascript
+// Throws with a ReferenceError because z is undefined
+try {
+  const m = 1;
+  const n = m + z;
+} catch (err) {
+  // Handle the error here.
+}
+```
+
+2. event emmitter
+```javascript
+const net = require('net');
+const connection = net.connect('localhost');
+
+// Adding an 'error' event handler to a stream:
+connection.on('error', (err) => {
+  // If the connection is reset by the server, or if it can't
+  // connect at all, or on any sort of error encountered by
+  // the connection, the error will be sent here.
+  console.error(err);
+});
+
+connection.pipe(process.stdout);
+```
+
+3. uncaughtException
+> 원시적인 처리를 위한 것 문서상에는 컴퓨터 업데이트시 전원을 뽑는것을 비유함. 10번 중 9번은 괜찮더라도 10번째에는 에러가난다는....  
+
