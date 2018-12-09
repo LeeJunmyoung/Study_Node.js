@@ -3,7 +3,8 @@ const port = 8080;
 
 
 http.createServer((req,res)=>{
-    console.log("접속!!",req);
+    
+    console.log("접속!!", res.connection.remoteAddress );
     res.write('<h1>Hello Node! </h1>');
     res.end('<p>Hello Server! </p>');
 }).listen(port,()=>{
