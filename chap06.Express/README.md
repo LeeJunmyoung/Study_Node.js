@@ -16,3 +16,63 @@
 5. views/   : 템플릿 파일을 모아둔 곳 view
 6. modles/  : 없지만 보통 db 데이터를 모아두는 폴더로 명시
 
+## Express middleware
+> app.js WAS 구동에 관한 내용이 담겨있다.  
+
+```javascript
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
+var app = express(); 
+//위 내용은 모듈을 불러오는 부분
+
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+// express.json , express.urlencoded , cookieParser express.static은
+// 내부적으로 next()를 호출하므로 다음 미들웨어로 넘어갈 수 있다.
+// next() 는 미들웨어 흐름을 제어하는 핵심적인 함수이다.
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
+```
+1. 요청 
+2. logger(morgan)    next()
+3. json, urlencoded  next() 
+4. cookieParser      next()
+5. static            next()
+6. router            next()
+7. 404처리 미들웨어   next()
+8. 에러핸들러         next()
+9. 응답
