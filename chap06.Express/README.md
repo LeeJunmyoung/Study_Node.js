@@ -101,3 +101,34 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 ```
 
+### cookie-parser
+> 동봉된 쿠키를 해석해 줍니다.
+> 해석된 쿠키들은 req.cookies 객체에 들어감. 
+
+```javascript
+var cookieParser=require('cookie-parser');
+app.use(cookieParser('secret code'));
+```
+
+
+### express-session  
+> 세션 관리용 미들웨어.  
+> express-generator로는 설치 되지 않으므로 직접 설치해야함.  
+> npm i express-session  
+> 현재의 세션 아이디는 req.sessionID로 확인가능  
+> 세션을 한번에 삭제하려면 req.session.destory()  
+```javascript
+var session = require('express-session');
+
+app.use(cookieParser('secret code'));
+app.use(session({
+  resave:false,  //세션이 수정사항이 생기지 않더라도 세션을 다시 저장할지에 대한 설정
+  saveUninitialized:false, //세션에 저장할 내역이 없더라도 세션을 저장할지에 대한 설정. 방문자를 추적할때 쓰임
+  secret:'secret code', //cookie-parser에 비밀키와 같은 역할
+  cookie:{//쿠키 옵션
+    httpOnly:true, 
+    secure:false
+  }
+}));
+```
+
