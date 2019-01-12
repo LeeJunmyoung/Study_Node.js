@@ -76,3 +76,28 @@ module.exports = app;
 7. 404처리 미들웨어   next()
 8. 에러핸들러         next()
 9. 응답
+
+
+## 미들웨어
+
+### morgan
+> GET / 200 51.267 ms -1539 같은 로그는 morgan  
+> 개발시 short/dev 배포시 common이나 combined많이 사용.
+```javascript
+var logger.require('morgan');
+
+app.use(logger('dev'));
+```
+
+### bodyparser
+> 요청의 본문을 해석해주는 미들웨어.  
+> req.body 에 본문을 해석해줌  
+> 단, multipart/form-data는 다른 모듈을 사용해야함.  
+
+```javascript
+var bodyParser= require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+```
+
