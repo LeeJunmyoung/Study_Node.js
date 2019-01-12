@@ -110,6 +110,9 @@ var cookieParser=require('cookie-parser');
 app.use(cookieParser('secret code'));
 ```
 
+### static
+> static 미들웨어는 정적인 파일들을 제공
+
 
 ### express-session  
 > 세션 관리용 미들웨어.  
