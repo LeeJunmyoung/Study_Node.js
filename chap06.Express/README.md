@@ -112,7 +112,10 @@ app.use(cookieParser('secret code'));
 
 ### static
 > static 미들웨어는 정적인 파일들을 제공
-
+> 내장되어 있는 미들웨어임.
+```javascript
+app.use(express.static(path.join(__dirname,'public')));
+```
 
 ### express-session  
 > 세션 관리용 미들웨어.  
