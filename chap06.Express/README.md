@@ -1,4 +1,4 @@
-# Express
+# Express framework
 
 ## 설치
 > npm i -g express-generator  
