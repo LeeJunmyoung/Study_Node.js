@@ -9,3 +9,11 @@ SQL(Mysql) | NOSQL(Mongo)
 안정선, 일관성 | 확장성, 가용성
 용어(테이블, 로우, 컬럼) | 용어(컬렉션, 다큐먼트, 필드)
 
+## Mongodb 접속
+> cd C:\Program Files\MongoDB\Server\4.0\bin  
+> mongod
+
+## DB생성
+> use <db명>
+> 현재 db명 확인 : db
+> db 리스트 확인 : dbs
