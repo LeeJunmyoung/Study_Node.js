@@ -17,3 +17,8 @@ SQL(Mysql) | NOSQL(Mongo)
 > use <db명>
 > 현재 db명 확인 : db
 > db 리스트 확인 : dbs
+
+## 컬렉션 생성
+> db.createCollection('컬렉션 명')
+> 컬렉션 확인 : show collections
+
