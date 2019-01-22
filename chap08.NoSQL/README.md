@@ -18,7 +18,29 @@ SQL(Mysql) | NOSQL(Mongo)
 > 현재 db명 확인 : db
 > db 리스트 확인 : dbs
 
-## 컬렉션 생성
-> db.createCollection('컬렉션 명')
-> 컬렉션 확인 : show collections
+## 컬렉션 생성  
+> db.createCollection('컬렉션 명')  
+> 컬렉션 확인 : show collections  
 
+## Create(생성)
+> db.collection.save(json형태)  
+> db.user.save({ _id : 100, item : "juice" }  
+
+## Find(조회)
+> db.collection.find()
+
+```
+> db.users.find({},{_id:0,name:1,married:1})
+# 전체에서 id는 가져오지말고 name과 married값만 전체 조회하는 쿼리
+```
+
+```
+> db.users.find({},{_id:0,name:1,married:1}).sort({age:-1}).limit(1).skip(1)
+# sort -1은 내림차순 1은 오름차순, limit 검색할 다큐먼트 개수, skip 건너뛸 개수
+```
+
+## Update(수정)
+> db.collection.update({검색},{  $set: {바꿀 필드 : 바꿀 값}  })
+
+## Delete(삭제)
+> db.collection.remove({삭제할 필드 : 값})
