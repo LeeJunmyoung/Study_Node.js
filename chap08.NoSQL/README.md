@@ -44,3 +44,6 @@ SQL(Mysql) | NOSQL(Mongo)
 
 ## Delete(삭제)
 > db.collection.remove({삭제할 필드 : 값})
+
+## mongoose
+> 흔히 불르는 ORM 이 아닌 ODM(Object Document Mapping)
