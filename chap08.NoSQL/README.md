@@ -47,3 +47,13 @@ SQL(Mysql) | NOSQL(Mongo)
 
 ## mongoose
 > 흔히 불르는 ORM 이 아닌 ODM(Object Document Mapping)
+
+[mongoose](https://mongoosejs.com/)    
+```
+npm i mongoose
+```
+
+1. mongodb 연결하기
+```javascript
+
+```
