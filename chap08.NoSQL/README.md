@@ -50,7 +50,7 @@ SQL(Mysql) | NOSQL(Mongo)
 
 [mongoose](https://mongoosejs.com/)    
 ```
-npm i mongoose
+npm i mongoose 
 ```
 
 1. mongodb 연결하기
