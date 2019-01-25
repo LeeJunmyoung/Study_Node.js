@@ -55,5 +55,11 @@ npm i mongoose
 
 1. mongodb 연결하기
 ```javascript
+// With object options
+var mongoose = require('mongoose');
 
+
+const uri = 'mongodb://localhost:27017/test?poolSize=4';
+mongoose.createConnection(uri);
+mongoose.createConnection(uri, { poolSize: 4 });
 ```
