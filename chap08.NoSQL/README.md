@@ -62,4 +62,35 @@ var mongoose = require('mongoose');
 const uri = 'mongodb://localhost:27017/test?poolSize=4';
 mongoose.createConnection(uri);
 mongoose.createConnection(uri, { poolSize: 4 });
+//////////////////////////////////////////////////
+const mongoose = require('mongoose');
+
+module.exports = ()=>{
+    const connect = () =>{
+        const uri = 'mongodb://localhost:27017/test?poolSize=4';
+        //개발 환경이 아닐때 몽구스가 생성하는 쿼리 내용을 콘솔을 통해 확인
+        if(process.env.NODE_ENV !== 'production'){
+            mongoose.set('debug',true);
+        }
+        //몽구스와 몽고디비를 연결하는 부분
+        mongoose.connect(uri,{
+            dbName:'nodejs'
+        },(error)=>{
+            if(error){
+                console.log('몽고디비 연결에러', error);
+            }else{
+                console.log('연결 성공');
+            }
+        });
+    }
+    connect();
+    //몽구스 커넥션에 이벤트 리스너를 달아두어, 에러발생시 에러내용을 기록하고, 연결종료시 재연결을 시도
+    mongoose.connection.on('error',(error)=>{
+        console.log('몽고디비 연결 에러',error);
+    });
+    mongoose.connection.on('disconnected',()=>{
+        console.log('몽고디비 연결이 끊겼습니다');
+        connect();
+    });
+}
 ```
