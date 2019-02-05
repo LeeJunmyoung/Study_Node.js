@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
+require('dotenv').config();
 
 const pageRoute = require('./routes/page');
 
@@ -13,16 +14,16 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.set('port',process.env.PORT||8001);
-
+console.log(process.env.COOKIE_SECRET);
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser('nodebirdsecret'));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
   resave:false,
   saveUninitialized:false,
-  secret:'nodebirdsecret',
+  secret:process.env.COOKIE_SECRET,
   cookie:{
     httpOnly:true,
     secure:false
@@ -30,7 +31,7 @@ app.use(session({
 }));
 app.use(flash());
 
-app.use('/', pageRouter);
+app.use('/', pageRoute);
 
 // catch 404 and forward to error handler
 app.use((req,res,next)=>{
