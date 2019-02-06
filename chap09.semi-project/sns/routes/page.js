@@ -15,7 +15,7 @@ router.get('/join',(req,res)=>{
 });
 
 router.get('/',(req,res,next)=>{
-    res.render('mian',{
+    res.render('main',{
         title:'NodeBird',
         twits:[],
         user:null,
