@@ -7,8 +7,10 @@ const flash = require('connect-flash');
 require('dotenv').config();
 
 const pageRoute = require('./routes/page');
+const { sequelize } = require('./models');
 
 const app = express();
+sequelize.sync();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
